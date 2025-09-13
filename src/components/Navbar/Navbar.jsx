@@ -1,31 +1,42 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaShoppingBag, FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   const navMenu = () => {
     return (
       <>
         <li>
-          <Link href={"/"}>Home</Link>
+          <Link className="font-semibold" href={"/"}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link href={"/about"}>About</Link>
+          <Link className="font-semibold" href={"/about"}>
+            About
+          </Link>
         </li>
         <li>
-          <Link href={"/services"}>Services</Link>
+          <Link className="font-semibold" href={"/services"}>
+            Services
+          </Link>
         </li>
         <li>
-          <Link href={"/blogs"}>Blogs</Link>
+          <Link className="font-semibold" href={"/blogs"}>
+            Blogs
+          </Link>
         </li>
         <li>
-          <Link href={"/contacts"}>Contacts</Link>
+          <Link className="font-semibold" href={"/contacts"}>
+            Contacts
+          </Link>
         </li>
       </>
     );
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm md:my-12">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,8 +77,16 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navMenu()}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Appointment</a>
+      <div className="navbar-end gap-3">
+        <FaShoppingBag className="text-gray-500" />
+        <FaSearch className="text-gray-500" />
+        <Link
+          alt=""
+          href={""}
+          className="btn rounded-md border-[#FF3811] text-[#FF3811]"
+        >
+          Appointment
+        </Link>
       </div>
     </div>
   );
