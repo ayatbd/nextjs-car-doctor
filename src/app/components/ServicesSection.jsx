@@ -9,8 +9,16 @@ const ServicesSection = async () => {
     <div className="grid grid-cols-12 gap-5">
       {data.map((item) => {
         return (
-          <div key={item._id} className="col-span-4">
-            <Image alt="" src={item.img} width={300} height={200} />
+          <div key={item._id} className="col-span-4 w-full h-full">
+            <div className="flex items-center justify-center border p-5 w-full h-full">
+              <Image
+                className="rounded"
+                alt=""
+                src={item.img}
+                width={314}
+                height={208}
+              />
+            </div>
           </div>
         );
       })}
