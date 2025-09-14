@@ -28,7 +28,7 @@ const ServicesSection = async () => {
             <p className="font-bold text-red-400 flex justify-between items-center">
               <span>Price: ${item.price}</span>
               <span className="hover:bg-gray-300 transition-all delay-75 p-1">
-                <Link href={"/"}>
+                <Link href={`/services/${item._id}`}>
                   <FaArrowRight />
                 </Link>
               </span>
