@@ -1,17 +1,27 @@
 "use client";
 
-const LogInForm = () => {
+import { registerUser } from "@/app/actions/auth/registerUser";
+
+const RegisterForm = () => {
   const handleSubmit = async (event) => {
+    event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    await registerUser({ name, email, password });
   };
   return (
     <>
       <form onSubmit={handleSubmit} className="mx-auto max-w-xs">
         <input
           className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+          type="text"
+          name="name"
+          placeholder="Name"
+        />
+        <input
+          className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
           type="email"
           name="email"
           placeholder="Email"
@@ -52,4 +62,4 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+export default RegisterForm;

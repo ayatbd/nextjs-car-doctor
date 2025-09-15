@@ -70,7 +70,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link href={"/"} className="text-xl">
-          <Image src={"/assets/logo.svg"} width={50} height={50} />
+          <Image src={"/assets/logo.svg"} alt="" width={50} height={50} />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

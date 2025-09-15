@@ -1,77 +1,93 @@
+"use client";
+
+import RegisterForm from "./components/RegisterForm";
+
 const Register = () => {
+  const handleSubmit = async (e) => {
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+  };
   return (
-    <div class="contain py-16">
-      <div class="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
-        <h2 class="text-2xl uppercase font-medium mb-1">Login</h2>
-        <p class="text-gray-600 mb-6 text-sm">
-          Welcome! So good to have you back!
-        </p>
-        <form autocomplete="off">
-          <p class="text-red-500"></p>
-          <div class="space-y-2">
-            <div>
-              <label for="email" class="text-gray-600 mb-2 block"></label>Email
-              address
-              <input
-                type="email"
-                name="email"
-                id="email"
-                class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-teal-500 placeholder-gray-400"
-                placeholder="youremail.@domain.com"
-              />
-            </div>
+    <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+      <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+        {/* Left Side */}
+        <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+          <div>
+            <img
+              src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
+              alt="Logo"
+              className="w-32 mx-auto"
+            />
           </div>
-          <div class="space-y-2">
-            <div>
-              <label for="password" class="text-gray-600 mb-2 block"></label>
-              Password
-              <div class="relative">
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-teal-500 placeholder-gray-400"
-                  placeholder="***********"
-                />
-                <div class="cursor-pointer absolute inset-y-0 right-0 flex items-center px-8 text-gray-600 border-l border-gray-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                    ></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                  </svg>
+          <div className="mt-12 flex flex-col items-center">
+            <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
+            <div className="w-full flex-1 mt-8">
+              <div className="flex flex-col items-center">
+                {/* Google Button */}
+                <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                  <div className="bg-white p-2 rounded-full">
+                    <svg className="w-4" viewBox="0 0 533.5 544.3">
+                      <path
+                        d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
+                        fill="#4285f4"
+                      />
+                      <path
+                        d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z"
+                        fill="#34a853"
+                      />
+                      <path
+                        d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z"
+                        fill="#fbbc04"
+                      />
+                      <path
+                        d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
+                        fill="#ea4335"
+                      />
+                    </svg>
+                  </div>
+                  <span className="ml-4">Sign Up with Google</span>
+                </button>
+
+                {/* GitHub Button */}
+                <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
+                  <div className="bg-white p-1 rounded-full">
+                    <svg className="w-6" viewBox="0 0 32 32">
+                      <path
+                        fillRule="evenodd"
+                        d="M16 4C9.371 4 4 9.371 4 16c0 5.3 3.438 9.8 8.207 11.387.602.11.82-.258.82-.578 0-.286-.011-1.04-.015-2.04-3.34.723-4.043-1.609-4.043-1.609-.547-1.387-1.332-1.758-1.332-1.758-1.09-.742.082-.726.082-.726 1.203.086 1.836 1.234 1.836 1.234 1.07 1.836 2.808 1.305 3.492 1 .11-.777.422-1.305.762-1.605-2.664-.301-5.465-1.332-5.465-5.93 0-1.313.469-2.383 1.234-3.223-.121-.3-.535-1.523.117-3.175 0 0 1.008-.32 3.301 1.23A11.487 11.487 0 0116 9.805c1.02.004 2.047.136 3.004.402 2.293-1.55 3.297-1.23 3.297-1.23.656 1.652.246 2.875.12 3.175.77.84 1.231 1.91 1.231 3.223 0 4.61-2.804 5.621-5.476 5.922.43.367.812 1.101.812 2.219 0 1.605-.011 2.898-.011 3.293 0 .32.214.695.824.578C24.566 25.797 28 21.3 28 16c0-6.629-5.371-12-12-12z"
+                      />
+                    </svg>
+                  </div>
+                  <span className="ml-4">Sign Up with GitHub</span>
+                </button>
+              </div>
+
+              {/* Divider */}
+              <div className="my-12 border-b text-center">
+                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                  Or sign up with e-mail
                 </div>
               </div>
+
+              {/* Email & Password Form */}
+              <RegisterForm></RegisterForm>
             </div>
           </div>
-          <div class="mt-4">
-            <button
-              type="submit"
-              class="block w-full py-2 text-center text-white bg-teal-500 border border-teal-500 rounded hover:bg-transparent hover:text-teal-500 transition uppercase font-roboto font-medium"
-            >
-              Login
-            </button>
-            <div class="flex gap-2 pt-5">
-              <p class="text-gray-600 text-sm">Don't have an account?</p>
-              <a class="text-gray-600 text-sm underline" href="/register">
-                Register here
-              </a>
-            </div>
-          </div>
-        </form>
+        </div>
+
+        {/* Right Side Image */}
+        <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
+          <div
+            className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+            style={{
+              backgroundImage:
+                "url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg')",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );
