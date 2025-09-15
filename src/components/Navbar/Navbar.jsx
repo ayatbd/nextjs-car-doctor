@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag, FaSearch } from "react-icons/fa";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 const Navbar = () => {
   const navMenu = () => {
@@ -77,8 +78,14 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navMenu()}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <FaShoppingBag className="text-gray-500" />
-        <FaSearch className="text-gray-500" />
+        <FaShoppingBag className="text-gray-600" size={20} />
+        <FaSearch className="text-gray-600" size={20} />
+        <Link href={"/login"} className="lg:tooltip" data-tip="Log In">
+          <IoPersonCircleSharp
+            className="text-gray-600 hover:text-gray-800 transition-all delay-75 shadow-2xl"
+            size={25}
+          />
+        </Link>
         <Link
           alt=""
           href={""}

@@ -1,21 +1,14 @@
 import React from "react";
 import LogInForm from "./components/LogInForm";
 
-const Signup = () => {
+const LogIn = () => {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         {/* Left Side */}
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-          <div>
-            <img
-              src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
-              alt="Logo"
-              className="w-32 mx-auto"
-            />
-          </div>
           <div className="mt-12 flex flex-col items-center">
-            <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
+            <h1 className="text-2xl xl:text-3xl font-extrabold">Log in</h1>
             <div className="w-full flex-1 mt-8">
               <div className="flex flex-col items-center">
                 {/* Google Button */}
@@ -85,4 +78,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default LogIn;
