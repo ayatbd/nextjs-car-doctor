@@ -1,9 +1,14 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag, FaSearch } from "react-icons/fa";
 import { IoPersonCircleSharp } from "react-icons/io5";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
   const navMenu = () => {
     return (
       <>
@@ -80,16 +85,26 @@ const Navbar = () => {
       <div className="navbar-end gap-3">
         <FaShoppingBag className="text-gray-600" size={20} />
         <FaSearch className="text-gray-600" size={20} />
-        <Link href={"/login"} className="lg:tooltip" data-tip="Log In">
-          <IoPersonCircleSharp
-            className="text-gray-600 hover:text-gray-800 transition-all delay-75 shadow-2xl"
-            size={25}
-          />
-        </Link>
+
+        {status == "authenticated" ? (
+          <Link
+            href={""}
+            className="rounded-md border border-[#FF3811] text-[#FF3811] py-1.5 px-3 hover:text-red-700 hover:bg-red-300 transition-all delay-75"
+          >
+            Log Out
+          </Link>
+        ) : (
+          <Link
+            href={"/login"}
+            className="rounded-md border border-[#FF3811] text-[#FF3811] py-1.5 px-3 hover:text-red-700 hover:bg-red-300 transition-all delay-75"
+          >
+            Login
+          </Link>
+        )}
         <Link
           alt=""
           href={""}
-          className="btn rounded-md border-[#FF3811] text-[#FF3811]"
+          className="rounded-md border border-[#FF3811] text-[#FF3811] py-1.5 px-3 hover:text-red-700 hover:bg-red-300 transition-all delay-75"
         >
           Appointment
         </Link>
