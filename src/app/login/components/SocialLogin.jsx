@@ -1,8 +1,11 @@
 "use client";
 
+import { signIn } from "next-auth/react";
+
 const SocialLogin = () => {
-  const handleSocialLogin = (providerName) => {
-    console.log(providerName);
+  const handleSocialLogin = async (providerName) => {
+    const result = await signIn(providerName, { redirect: false });
+    console.log(result);
   };
   return (
     <div className="flex flex-col items-center">
