@@ -1,18 +1,30 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
-  const handleSocialLogin = async (providerName) => {
-    const result = await signIn(providerName, { redirect: false });
-    console.log(result);
+  const router = useRouter();
+  const session = useSession();
+
+  const handleSocialLogin = (providerName) => {
+    signIn(providerName);
   };
+
+  useEffect(() => {
+    if (session?.status == "authenticated") {
+      router.push("/");
+      toast.success("Login Successful");
+    }
+  }, [session?.status]);
   return (
     <div className="flex flex-col items-center">
       {/* Google Button */}
       <button
         onClick={() => handleSocialLogin("google")}
-        className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+        className="w-full max-w-xs cursor-pointer font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
       >
         <div className="bg-white p-2 rounded-full">
           <svg className="w-4" viewBox="0 0 533.5 544.3">
@@ -40,7 +52,7 @@ const SocialLogin = () => {
       {/* GitHub Button */}
       <button
         onClick={() => handleSocialLogin("github")}
-        className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
+        className="w-full max-w-xs cursor-pointer font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5"
       >
         <div className="bg-white p-1 rounded-full">
           <svg className="w-6" viewBox="0 0 32 32">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag, FaSearch } from "react-icons/fa";
 import { IoPersonCircleSharp } from "react-icons/io5";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -87,12 +88,21 @@ const Navbar = () => {
         <FaSearch className="text-gray-600" size={20} />
 
         {status == "authenticated" ? (
-          <Link
-            href={""}
-            className="rounded-md border border-[#FF3811] text-[#FF3811] py-1.5 px-3 hover:text-red-700 hover:bg-red-300 transition-all delay-75"
-          >
-            Log Out
-          </Link>
+          <>
+            <Image
+              src={session?.user?.image}
+              width={30}
+              height={30}
+              alt="profile picture"
+            ></Image>
+            <Link
+              onClick={() => signOut()}
+              href={""}
+              className="rounded-md border border-[#FF3811] text-[#FF3811] py-1.5 px-3 hover:text-red-700 hover:bg-red-300 transition-all delay-75"
+            >
+              Log Out
+            </Link>
+          </>
         ) : (
           <Link
             href={"/login"}

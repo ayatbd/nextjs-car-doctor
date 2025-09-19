@@ -1,8 +1,10 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Register from "./../../register/page";
 const LogInForm = () => {
   const router = useRouter();
 
@@ -63,6 +65,12 @@ const LogInForm = () => {
           </svg>
           <span className="ml-3">Sign Up</span>
         </button>
+        <div className="text-center flex items-center justify-center gap-2 mt-6">
+          <p>Don't have an account?</p>
+          <Link className="text-blue-800 underline" href={"/register"}>
+            Register
+          </Link>
+        </div>
         <p className="mt-6 text-xs text-gray-600 text-center">
           I agree to abide by templatana's
           <a
