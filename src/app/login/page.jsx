@@ -1,4 +1,3 @@
-import React from "react";
 import LogInForm from "./components/LogInForm";
 import SocialLogin from "./components/SocialLogin";
 
