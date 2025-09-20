@@ -4,12 +4,10 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag, FaSearch } from "react-icons/fa";
-import { IoPersonCircleSharp } from "react-icons/io5";
 import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-  console.log(session);
   const navMenu = () => {
     return (
       <>

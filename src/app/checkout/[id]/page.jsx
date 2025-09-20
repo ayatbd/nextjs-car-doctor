@@ -6,7 +6,7 @@ const CheckOutPage = async ({ params }) => {
   const data = await res.json();
   return (
     <div>
-      <CheckoutForm></CheckoutForm>
+      <CheckoutForm data={data}></CheckoutForm>
     </div>
   );
 };

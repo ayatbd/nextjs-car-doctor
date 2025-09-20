@@ -1,68 +1,61 @@
-const CheckoutForm = () => {
+"use client";
+
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
+const CheckoutForm = ({ data }) => {
+  const { data: session } = useSession();
+
+  const handleBookService = async (event) => {
+    toast("Submit is processing...");
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const date = form.date.value;
+    const email = form.email.value;
+    const price = form.price.value;
+    const number = form.number.value;
+    const address = form.address.value;
+
+    const bookingPayload = {
+      customerName: name,
+      email,
+      date,
+      address,
+      price,
+      number,
+      service_id: data._id,
+      service_name: data.title,
+      service_img: data.img,
+      service_price: data.price,
+    };
+    console.log(bookingPayload);
+  };
   return (
     <div className="flex items-center justify-center p-12">
       {/* Author: FormBold Team */}
       <div className="mx-auto w-full max-w-[550px] bg-white">
-        <form>
-          {/* Full Name */}
-          <div className="mb-5">
-            <label
-              htmlFor="name"
-              className="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Full Name"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-              text-base font-medium text-[#6B7280] outline-none 
-              focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-
-          {/* Phone Number */}
-          <div className="mb-5">
-            <label
-              htmlFor="phone"
-              className="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Phone Number
-            </label>
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              placeholder="Enter your phone number"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-              text-base font-medium text-[#6B7280] outline-none 
-              focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-
-          {/* Email */}
-          <div className="mb-5">
-            <label
-              htmlFor="email"
-              className="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-              text-base font-medium text-[#6B7280] outline-none 
-              focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-
-          {/* Date & Time */}
+        <form onSubmit={handleBookService}>
           <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <label
+                  htmlFor="date"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  Name
+                </label>
+                <input
+                  defaultValue={session?.user?.name}
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Full Name"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
+                  text-base font-medium text-[#6B7280] outline-none 
+                  focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
                 <label
@@ -81,18 +74,38 @@ const CheckoutForm = () => {
                 />
               </div>
             </div>
+          </div>
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <label
+                  htmlFor="email"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  Email
+                </label>
+                <input
+                  defaultValue={session?.user?.email}
+                  type="email"
+                  name="email"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
+                  text-base font-medium text-[#6B7280] outline-none 
+                  focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
             <div className="w-full px-3 sm:w-1/2">
               <div className="mb-5">
                 <label
                   htmlFor="time"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  Time
+                  Due amount
                 </label>
                 <input
-                  type="time"
-                  name="time"
-                  id="time"
+                  type="text"
+                  name="price"
+                  defaultValue={data?.price}
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
                   text-base font-medium text-[#6B7280] outline-none 
                   focus:border-[#6A64F1] focus:shadow-md"
@@ -101,63 +114,39 @@ const CheckoutForm = () => {
             </div>
           </div>
 
-          {/* Address */}
-          <div className="mb-5 pt-3">
-            <label className="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-              Address Details
-            </label>
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <input
-                    type="text"
-                    name="area"
-                    id="area"
-                    placeholder="Enter area"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-                    text-base font-medium text-[#6B7280] outline-none 
-                    focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <label
+                  htmlFor="date"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  Phone
+                </label>
+                <input
+                  type="number"
+                  name="number"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
+                  text-base font-medium text-[#6B7280] outline-none 
+                  focus:border-[#6A64F1] focus:shadow-md"
+                />
               </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    placeholder="Enter city"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-                    text-base font-medium text-[#6B7280] outline-none 
-                    focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <input
-                    type="text"
-                    name="state"
-                    id="state"
-                    placeholder="Enter state"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-                    text-base font-medium text-[#6B7280] outline-none 
-                    focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <input
-                    type="text"
-                    name="postCode"
-                    id="postCode"
-                    placeholder="Post Code"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
-                    text-base font-medium text-[#6B7280] outline-none 
-                    focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
+            </div>
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <label
+                  htmlFor="time"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  Present Address
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 
+                  text-base font-medium text-[#6B7280] outline-none 
+                  focus:border-[#6A64F1] focus:shadow-md"
+                />
               </div>
             </div>
           </div>
