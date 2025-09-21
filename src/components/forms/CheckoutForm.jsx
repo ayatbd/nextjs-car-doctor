@@ -29,6 +29,12 @@ const CheckoutForm = ({ data }) => {
       service_price: data.price,
     };
     console.log(bookingPayload);
+    const res = await fetch("http://localhost:3000/api/service", {
+      method: "POST",
+      body: JSON.stringify(bookingPayload),
+    });
+    const postedResponse = await res.json();
+    console.log("posted Data", postedResponse);
   };
   return (
     <div className="flex items-center justify-center p-12">
