@@ -32,8 +32,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className="font-semibold" href={"/contacts"}>
-            Contacts
+          <Link className="font-semibold" href={"/my-bookings"}>
+            My Bookings
           </Link>
         </li>
       </>
