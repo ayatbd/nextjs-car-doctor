@@ -1,3 +1,4 @@
+import DeleteBookingButton from "@/app/my-bookings/components/DeleteBookingButton";
 import Image from "next/image";
 
 const MyBookingsTable = ({ bookings }) => {
@@ -18,7 +19,7 @@ const MyBookingsTable = ({ bookings }) => {
           <tbody>
             {bookings.map((singleBooking) => {
               return (
-                <tr>
+                <tr key={singleBooking._id}>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -39,9 +40,7 @@ const MyBookingsTable = ({ bookings }) => {
                   <th>
                     <button className="btn btn-ghost btn-xs">Edit</button>
                   </th>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">Delete</button>
-                  </th>
+                  <DeleteBookingButton></DeleteBookingButton>
                 </tr>
               );
             })}
