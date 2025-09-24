@@ -1,7 +1,8 @@
 import DeleteBookingButton from "@/app/my-bookings/components/DeleteBookingButton";
 import Image from "next/image";
 
-const MyBookingsTable = ({ bookings }) => {
+const MyBookingsTable = ({ data }) => {
+  console.log(data);
   return (
     <div>
       <h1 className="text-center mb-4 font-bold">My all bookings</h1>
@@ -17,9 +18,9 @@ const MyBookingsTable = ({ bookings }) => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((singleBooking) => {
+            {data.map((item) => {
               return (
-                <tr key={singleBooking._id}>
+                <tr key={item._id}>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -27,20 +28,20 @@ const MyBookingsTable = ({ bookings }) => {
                           <Image
                             width={48}
                             height={48}
-                            src={singleBooking.service_img}
+                            src={item.service_img}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>{singleBooking.service_name}</td>
-                  <td>{singleBooking.service_name}</td>
-                  <td>{singleBooking.service_price}</td>
+                  <td>{item.service_name}</td>
+                  <td>{item.service_name}</td>
+                  <td>{item.service_price}</td>
                   <th>
                     <button className="btn btn-ghost btn-xs">Edit</button>
                   </th>
-                  <DeleteBookingButton></DeleteBookingButton>
+                  <DeleteBookingButton id={item._id} />
                 </tr>
               );
             })}
