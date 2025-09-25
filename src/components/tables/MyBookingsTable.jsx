@@ -1,3 +1,4 @@
+"use client";
 import DeleteBookingButton from "@/app/my-bookings/components/DeleteBookingButton";
 import Image from "next/image";
 

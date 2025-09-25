@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const DeleteBookingButton = ({ id }) => {
   const router = useRouter();
@@ -11,7 +11,7 @@ const DeleteBookingButton = ({ id }) => {
     });
     const data = await res.json();
     console.log(data);
-    router.refresh;
+    router.refresh();
   };
   return (
     <th>
