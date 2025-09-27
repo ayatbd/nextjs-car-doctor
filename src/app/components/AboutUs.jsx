@@ -25,27 +25,27 @@ const AboutUs = () => {
   // </div>
   return (
     <section className="py-12 px-6 md:px-16 lg:px-24 bg-white">
-      <div className="grid md:grid-cols-2 items-center gap-10">
+      <div className="grid md:grid-cols-2 items-center gap-28">
         {/* Left Side Images */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 overflow-hidden">
           <Image
             src="/assets/images/about_us/person.jpg"
             alt=""
             width={460}
             height={470}
-            className="rounded-lg shadow-md"
+            className="rounded-lg shadow-md absolute"
           />
           <Image
             src="/assets/images/about_us/parts.jpg"
             alt=""
             width={327}
             height={332}
-            className="rounded-lg shadow-md"
+            className="rounded-lg shadow-md relative"
           />
         </div>
 
         {/* Right Side Content */}
-        <div>
+        <div className="overflow-hidden">
           <p className="text-red-600 font-semibold mb-2">About Us</p>
           <h2 className="text-3xl font-extrabold text-gray-900 leading-snug mb-4">
             We are qualified <br /> & of experience <br /> in this field
